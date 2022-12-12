@@ -32,8 +32,6 @@ class LegArmour:
     self.reduction = reduction
 
 
-
-
 class Boots:
   def __init__(self, name, reduction):
     self.name = name
@@ -61,8 +59,8 @@ class Enemy:
     if(self.name == 'Ogre'): self.damage = ogre[RR(0,len(ogre))-1]
     if(self.name == 'Cyclopse'): self.damage = cyclopse[RR(0,len(cyclopse))-1]
 
-    print(f'\n| BATTLE! | YOUR HP: {player.hp} | YOUR DEFENSE: {player.defense} |')
-    print('-----------------------------------------------------------')
+    print(colored(f'\n| BATTLE! | YOUR HP: {player.hp} | YOUR DEFENSE: {player.defense} |',attrs=['bold'], color='red'))
+    print(colored('------------------------------------------\n',attrs=['bold'], color='red'))
     with console.status("[bold green]Attacking...."):
       if (enemy.damage - player.defense) <= 0:
         player.hp -= 1
@@ -82,7 +80,7 @@ class Character:
     self.exp = 0
     self.hp = 5
     self.damage = 0
-    self.currency = 6000
+    self.currency = 0
     self.defense = 0
     self.helmet = False
     self.bodyArmour = False
@@ -103,44 +101,37 @@ class Character:
 
   def conclusion(self, player, enemy):
     if player.hp > 0:
-      
       self.exp += enemy.exp_held
       self.currency += enemy.currency_held
       oldLevel = self.level
       if self.exp >= (self.level * 100):
         newLevel = self.level + 1
         self.level += 1
-        player.currency += 100
-        if newLevel % 2 == 0:
+        if newLevel % 5 == 0:
           player.damage += 1
           player.defense += 1
-          increases = "Your damage and defense increased by 1"
+          increases = "   BASE DAMAGE AND DEFENSE INCREASED BY 1!"
         else:
           increases = ""
-        print(f'''        VICTORY!
-+==========================+
-  You defeated {enemy.name}
-  You acquired {enemy.exp_held} xp
-  You acquired {enemy.currency_held} coins
-  You leveled up to level {newLevel}
-  {increases}
-+==========================+
-''')
+        print(colored("       VICTORY!",attrs=["bold"], color="cyan"), 
+          colored('\n+======================================+\n',attrs=["bold"], color="magenta"),
+          colored(f"   YOU DEFEATED {enemy.name} \n",attrs=["bold"], color="yellow"),
+          colored(f"   YOU ACQUIRED {enemy.exp_held} XP\n",attrs=["bold"], color="yellow"),  
+          colored(f"   YOU ACQUIRED {enemy.currency_held} COINS\n",attrs=["bold"], color="yellow"), 
+          colored(f"   YOU LEVELED UP TO LEVEL {newLevel}!\n",attrs=["bold"], color="yellow"), 
+          colored(f'{increases}',attrs=["bold"], color="yellow"), 
+          colored('\n+======================================+\n',attrs=["bold"], color="magenta"))
         self.exp = 0
       elif(self.level == oldLevel):
-        print(f'''
-      VICTORY!
-+====================+
-    You defeated {enemy.name}
-    You acquired {enemy.exp_held} xp
-    You acquired {enemy.currency_held} coins
-+====================+
-''')
+        print(colored("       VICTORY!",attrs=["bold"], color="cyan"), 
+          colored('\n+====================+\n',attrs=["bold"], color="magenta"),
+          colored(f"   YOU DEFEATED {enemy.name} \n",attrs=["bold"], color="yellow"),
+          colored(f"   YOU ACQUIRED {enemy.exp_held} XP\n",attrs=["bold"], color="yellow"),  
+          colored(f"   YOU ACQUIRED {enemy.currency_held} COINS",attrs=["bold"], color="yellow"),   
+          colored('\n+====================+\n',attrs=["bold"], color="magenta"))
     else: 
-      print(f'''
-      DEFEAT!
-+====================+
-    You were defeated by {enemy.name}!
-+====================+
-''')
+       print(colored("       DEFEAT!",attrs=["bold"], color="cyan"), 
+          colored('\n+==============================+\n',attrs=["bold"], color="magenta"),
+          colored(f"   YOU WERE DEFEATED BY {enemy.name.upper()}!",attrs=["bold"], color="yellow"),   
+          colored('\n+==============================+\n',attrs=["bold"], color="magenta"))
 

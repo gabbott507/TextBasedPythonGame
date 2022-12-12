@@ -11,10 +11,10 @@ weapon = Weapon('Broken Sword', 1)
 launch = True
 player.defense = 0
 ownedWeapons = [True, False, False, False]
-ownedHelmets = [False, False, False, False, False]
-ownedBody = [False, False, False, False, False]
-ownedLegs = [False, False, False, False, False]
-ownedBoots = [False, False, False, False, False]
+ownedHelmets = [False, False, False, False, False, True]
+ownedBody = [False, False, False, False, False, True]
+ownedLegs = [False, False, False, False, False, True]
+ownedBoots = [False, False, False, False, False, True]
 
 while launch == True:
     selection = StartMenu(player.level)
@@ -23,7 +23,7 @@ while launch == True:
     if selection == '1':
         enemy = EnemyList()
         if enemy == '1':
-            enemy = Enemy('Zombie', 3, 100, random.randint(1, 2), 100)
+            enemy = Enemy('Zombie', 3, 50, random.randint(1, 2), 100)
         elif enemy == '2':
             enemy = Enemy('Ghoul', 5, 70, random.randint(2, 3), 200)
         elif enemy == '3':   
@@ -46,10 +46,10 @@ while launch == True:
         shop = ShopMenu()
         if shop == '1':
             weaponSwitcher = {
-                'Broken Sword': [1, 0],
-                'Short  Sword': [2, 1000],
-                'Long   Sword': [3, 2000],
-                'Dragon Sword': [4, 3000]
+                'Broken Sword  ': [1, 0],
+                'Short Sword   ': [2, 1000],
+                'Long Sword    ': [3, 2000],
+                'Straight Sword': [4, 3000]
                 }
 
             sword, num, owned, player.currency = WeaponsList(player.currency, weaponSwitcher, ownedWeapons)
@@ -64,7 +64,8 @@ while launch == True:
                 'Wood     ' : [2, 1000],
                 'Aluminium' : [3, 2000],
                 'Bronze   ' : [4, 3000],
-                'Titanium ' : [8, 4000]
+                'Titanium ' : [8, 4000],
+                'None     ' : [0, 0]
             }
             if (player.helmet): # Checks if player has helmet is True
                 player.helmet = False
@@ -83,7 +84,8 @@ while launch == True:
                 'Wood     ' : [2, 1000],
                 'Aluminium' : [3, 2000],
                 'Bronze   ' : [4, 3000],
-                'Titanium ' : [8, 4000]
+                'Titanium ' : [8, 4000],
+                'None     ' : [0, 0]
             }
             if (player.bodyArmour): # Checks if player has body armour is True
                 player.bodyArmour = False
@@ -103,7 +105,8 @@ while launch == True:
                 'Wood     ' : [2, 1000],
                 'Aluminium' : [3, 2000],
                 'Bronze   ' : [4, 3000],
-                'Titanium ' : [8, 4000]
+                'Titanium ' : [8, 4000],
+                'None     ' : [0, 0]
             }
             if (player.legArmour): # Checks if player has body armour is True
                 player.legArmour = False
@@ -123,7 +126,8 @@ while launch == True:
                 'Wood     ' : [2, 1000],
                 'Aluminium' : [3, 2000],
                 'Bronze   ' : [4, 3000],
-                'Titanium ' : [8, 4000]
+                'Titanium ' : [8, 4000],
+                'None     ' : [0, 0]
             }
             if (player.boots): # Checks if player has body armour is True
                 player.boots = False

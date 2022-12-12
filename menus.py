@@ -43,8 +43,6 @@ def AttackMenu():
 
     
 def WeaponsList(currency, Weapons, ownedWeapons):
-
-    
     print(colored("          WEAPON LIST",attrs=["bold"], color="cyan"), 
           colored('\n+===================================+\n',attrs=["bold"], color="magenta"),
           colored('        NAME',attrs=["bold"], color="magenta"), "       ",colored('DAMAGE',attrs=["bold"], color="magenta"), "   ",colored('PRICE\n',attrs=["bold"], color="magenta")
@@ -78,9 +76,6 @@ def WeaponsList(currency, Weapons, ownedWeapons):
     return weapons, (int(selection)-1), owned, currency
     
     
-  
-  
-
 def HelmetMenu(currency, Helmets, ownedHelmets):
     
     print(colored("          HELMETS",attrs=["bold"], color="cyan"), 
@@ -117,13 +112,11 @@ def HelmetMenu(currency, Helmets, ownedHelmets):
 
 
 def bodyMenu(currency, BodyArmour, ownedBody):
-    
     print(colored("          BODY ARMOUR",attrs=["bold"], color="cyan"), 
           colored('\n+=========================================+\n',attrs=["bold"], color="magenta"),
           colored('        NAME',attrs=["bold"], color="magenta"), "     ",colored('REDUCTION',attrs=["bold"], color="magenta"),"    ",colored('PRICE\n',attrs=["bold"], color="magenta")
           )
     x = 1
-    
     for key,value in BodyArmour.items():
         print(colored("[",attrs=["bold"],color="magenta"),colored(x,attrs=["bold"],color="yellow"),colored("]",attrs=["bold"], color="magenta"),
             (colored(key + "  ",attrs=["bold"], color="green")),"  ", colored(value[0],attrs=["bold"], color="red"),"       ", colored(value[1],attrs=["bold"], color="red"))
@@ -150,14 +143,13 @@ def bodyMenu(currency, BodyArmour, ownedBody):
     owned = True 
     return body, (int(selection)-1), owned, currency
 
+
 def legMenu(currency, LegArmour, ownedLegs):
-    
     print(colored("          LEG ARMOUR",attrs=["bold"], color="cyan"), 
           colored('\n+=========================================+\n',attrs=["bold"], color="magenta"),
           colored('        NAME',attrs=["bold"], color="magenta"), "     ",colored('REDUCTION',attrs=["bold"], color="magenta"),"    ",colored('PRICE\n',attrs=["bold"], color="magenta")
           )
     x = 1
-    
     for key,value in LegArmour.items():
         print(colored("[",attrs=["bold"],color="magenta"),colored(x,attrs=["bold"],color="yellow"),colored("]",attrs=["bold"], color="magenta"),
             (colored(key + "  ",attrs=["bold"], color="green")),"  ", colored(value[0],attrs=["bold"], color="red"),"       ", colored(value[1],attrs=["bold"], color="red"))
@@ -186,13 +178,11 @@ def legMenu(currency, LegArmour, ownedLegs):
 
 
 def bootMenu(currency, BootArmour, ownedBoots):
-    
     print(colored("          BODY ARMOUR",attrs=["bold"], color="cyan"), 
           colored('\n+=========================================+\n',attrs=["bold"], color="magenta"),
           colored('        NAME',attrs=["bold"], color="magenta"), "     ",colored('REDUCTION',attrs=["bold"], color="magenta"),"    ",colored('PRICE\n',attrs=["bold"], color="magenta")
           )
     x = 1
-    
     for key,value in BootArmour.items():
         print(colored("[",attrs=["bold"],color="magenta"),colored(x,attrs=["bold"],color="yellow"),colored("]",attrs=["bold"], color="magenta"),
             (colored(key + "  ",attrs=["bold"], color="green")),"  ", colored(value[0],attrs=["bold"], color="red"),"       ", colored(value[1],attrs=["bold"], color="red"))
@@ -229,6 +219,5 @@ def EnemyList():
           colored("   [4] OGRE\n",attrs=["bold"], color="yellow"),  
           colored("   [5] CYCLOPSE",attrs=["bold"], color="yellow"), 
           colored('\n+====================+\n',attrs=["bold"], color="magenta"))
-
   enemy = input("> ")
   return enemy
